@@ -1,77 +1,182 @@
-# MelodyMind AI - Neural Music Composer
+# 🎵 MelodyMind AI
 
-MelodyMind AI is a state-of-the-art AI-powered music generation application. Built with **React 19**, **Vite**, **Express**, **Tailwind CSS v4**, and **Tone.js**, it leverages the power of the **Google GenAI SDK (Gemini 1.5 Flash)** to compose original musical melodies based on customizable parameters, render them in real-time in the browser, visualize their waveforms, and export them as MIDI files.
+MelodyMind AI is an intelligent music composition web application that generates original melodies based on user preferences such as genre, mood, tempo, instrument, creativity level, and composition length.
 
-<div align="center">
-  <img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+The application provides an interactive interface where users can generate, preview, visualize, and download AI-generated musical compositions in MIDI format.
 
 ---
 
-## 🚀 Key Features
+## ✨ Features
 
-*   **Neural Music Generator**: Define genres (Classical, Jazz, Electronic, Lo-Fi, Ambient, Cinematic), moods (Happy, Sad, Epic, Relaxing, etc.), and tempo.
-*   **AI Creativity Slider**: Fine-tune the AI temperature to go from structured, classical arrangements to experimental, progressive melodies.
-*   **Real-time Synthesis**: High-quality browser audio synthesis using **Tone.js** polyphonic synthesizers tailored to your selected instrument (Piano, Synth Pad, Strings, Kalimba, Marimba).
-*   **Interactive Audio Waveform**: A dynamic, canvas-based audio visualizer that animates based on real-time synthesizer level output.
-*   **MIDI File Export**: Instantly download your generated melodies as standard `.mid` files using `midi-writer-js` for use in DAWs (Logic, Ableton, FL Studio).
-*   **Immersive Sci-Fi UI**: A futuristic dark theme with fluid micro-interactions and animations powered by **Motion**.
+- 🎼 AI-powered melody generation
+- 🎹 Multiple virtual instruments
+- 🎭 Mood-based music creation
+- 🎵 Genre selection
+- ⚡ Adjustable tempo and creativity level
+- 🎚️ Custom composition length
+- ▶️ Play, Pause and Stop playback
+- 📈 Real-time audio waveform visualization
+- 💾 Export compositions as MIDI files
+- 📱 Responsive modern UI
+- 🌙 Clean and intuitive interface
 
 ---
 
 ## 🛠️ Tech Stack
 
-*   **Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Motion
-*   **Audio Engine**: Tone.js, midi-writer-js
-*   **Backend Server**: Express.js, TypeScript (running via tsx)
-*   **AI Orchestrator**: `@google/genai` (Google Gemini 1.5 Flash)
+### Frontend
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Motion
+- Lucide React
+
+### Backend
+- Node.js
+- Express.js
+
+### Music Libraries
+- Tone.js
+- MIDI Writer JS
+
+### AI
+- Generative AI API
 
 ---
 
-## 🏃 Getting Started
+## 📂 Project Structure
 
-### Prerequisites
+```
+melodymind-ai/
+│
+├── src/
+│   ├── components/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+│
+├── server.ts
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+└── .env.example
+```
 
-Ensure you have **Node.js** installed on your system.
+---
 
-### 1. Installation
+## ⚙️ Installation
 
-Clone this repository and install the project dependencies:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/melodymind-ai.git
+```
+
+### 2. Navigate to the project
+
+```bash
+cd melodymind-ai
+```
+
+### 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Configure Environment Variables
+### 4. Create an environment file
 
-Create a file named `.env.local` in the root directory (this file is configured in `.gitignore` and will never be committed to Git) and add your Gemini API Key:
+Create a `.env` file in the project root and add your API key.
 
 ```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
+GEMINI_API_KEY=your_api_key_here
 ```
 
-> [!TIP]
-> You can acquire a free Gemini API Key from [Google AI Studio](https://aistudio.google.com/).
-
-### 3. Run the App
-
-Start the development server (which spins up both the frontend client and backend API):
+### 5. Start the development server
 
 ```bash
 npm run dev
 ```
 
-The application will be running locally at: `http://localhost:3000`
+The application will be available at:
+
+```
+http://localhost:5173
+```
 
 ---
 
-## ⚙️ How It Works Under the Hood
+## 🚀 Build for Production
 
-1.  **Request Composition**: The React frontend sends the desired parameters (genre, mood, instrument, creativity, length) to the `/api/generate` endpoint on the Express server.
-2.  **Structured Output Schema**: The server queries the Gemini API using the new `@google/genai` SDK, passing a strict JSON Schema. Gemini returns a fully structured JSON response containing:
-    *   `note`: MIDI pitch string (e.g. `C4`, `Eb5`, `rest`)
-    *   `time`: Tone.js transport time in `"measures:beats:sixteenths"` format (e.g., `"0:2:0"`)
-    *   `duration`: Subdivision duration (e.g. `"4n"`, `"8n"`)
-    *   `velocity`: Dynamic velocity (intensity value between `0` and `1`)
-3.  **Synthesis**: Tone.js parses the note sequence, schedules them in its virtual transport timeline, and triggers polyphonic synths.
-4.  **Visualizations**: A high-performance canvas loop measures decibel levels from the master output and draws a real-time responsive sound wave.
+```bash
+npm run build
+```
+
+---
+
+## ▶️ Run Production Build
+
+```bash
+npm start
+```
+
+---
+
+## 🎮 How to Use
+
+1. Select a music genre.
+2. Choose an instrument.
+3. Pick the desired mood.
+4. Adjust the tempo.
+5. Set the creativity level.
+6. Choose the composition length.
+7. Click **Generate Music**.
+8. Listen to the generated melody.
+9. Download the composition as a MIDI file if desired.
+
+---
+
+## 📦 Available Scripts
+
+| Command | Description |
+|----------|-------------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm start` | Run production build |
+| `npm run lint` | Type checking |
+
+---
+
+## 🔑 Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `GEMINI_API_KEY` | API key used for music generation |
+
+---
+
+## 🎯 Future Improvements
+
+- Multi-track compositions
+- Additional instrument libraries
+- WAV and MP3 export
+- User accounts and saved compositions
+- Playlist management
+- Music sharing
+- AI-assisted chord progression suggestions
+- Piano roll editor
+- Dark/Light theme toggle
+
+---
+
+## 📄 License
+
+This project is intended for educational and learning purposes.
+
+---
+
+## 👨‍💻 Author
+
+Developed as an AI-powered music generation application using modern web technologies.
