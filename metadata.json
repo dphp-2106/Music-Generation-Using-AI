@@ -1,0 +1,6 @@
+{
+  "name": "MelodyMind AI",
+  "description": "An AI-powered music generation system that composes original melodies and harmonies based on genre, mood, and creativity parameters.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
